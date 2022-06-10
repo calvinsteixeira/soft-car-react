@@ -8,10 +8,9 @@
   },
   "scripts": {
     "dev": "vite",
-    "preinstall": "npm run build",
     "build": "vite build",
     "preview": "vite preview",
-    "start": "npm run preview"
+    "start": "vite"
   },
   "dependencies": {
     "@emotion/react": "^11.9.0",
