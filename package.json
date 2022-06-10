@@ -8,7 +8,7 @@
   },
   "scripts": {
     "dev": "vite",
-    "postinstall": "npm run build",
+    "preinstall": "npm run build",
     "build": "vite build",
     "preview": "vite preview",
     "start": "npm run preview"
