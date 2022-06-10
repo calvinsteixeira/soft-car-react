@@ -6,7 +6,7 @@
     "dev": "vite",
     "build": "vite build",
     "preview": "vite preview",
-    "start": "npm run dev"
+    "start": "vite"
   },
   "dependencies": {
     "@emotion/react": "^11.9.0",
