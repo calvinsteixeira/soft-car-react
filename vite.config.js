@@ -7,7 +7,7 @@ export default defineConfig({
     port: process.env.PORT || 3000,
     proxy: {
       "/": {
-        target: `http://localhost:${process.env.PORT}`,
+        target: `http://localhost:${process.env.PORT}/`,
       },
     },
   },
