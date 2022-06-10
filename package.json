@@ -7,10 +7,11 @@
     "node": "16.x"
   },
   "scripts": {
-    "postinstall": "vite build",
+    "postinstall": "npm run build",
     "dev": "vite",
+    "build": "vite build",
     "preview": "vite preview",
-    "start": "vite"
+    "start": "vite serve"
   },
   "dependencies": {
     "@emotion/react": "^11.9.0",
