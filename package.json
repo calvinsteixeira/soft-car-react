@@ -7,9 +7,8 @@
     "node": "16.x"
   },
   "scripts": {
-    "postinstall": "npm run build",
+    "postinstall": "vite build",
     "dev": "vite",
-    "build": "vite build",
     "preview": "vite preview"
     
   },
