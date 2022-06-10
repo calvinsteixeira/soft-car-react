@@ -9,8 +9,8 @@
   "scripts": {
     "postinstall": "vite build",
     "dev": "vite",
-    "preview": "vite preview"
-    
+    "preview": "vite preview",
+    "start": "vite"
   },
   "dependencies": {
     "@emotion/react": "^11.9.0",
