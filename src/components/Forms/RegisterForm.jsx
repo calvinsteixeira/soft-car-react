@@ -119,22 +119,20 @@ export default function RegisterForm() {
   function registerUser(e) {
     e.preventDefault();
     setButtonContent(<CircularProgress size="2rem" sx={{ color: "white" }} />);
+    const credentials = {
+      name: name,
+      CPF: cpf.replace(/[.-]/g, ""),
+      username: username,
+      password: password,
+    };
+    JSON.stringify(credentials);
     setTimeout(() => {
       axios
-        .post(
-          apiUrl + "/register-user",
-          {
-            name: name,
-            CPF: cpf.replace(/[.-]/g, ""),
-            username: username,
-            password: password,
+        .post(apiUrl + "/register-user", credentials, {
+          headers: {
+            "Content-Type": "application/json",
           },
-          {
-            headers: {
-              "Content-Type": "application/json",
-            },
-          }
-        )
+        })
         .then((res) => {
           setButtonContent("CADASTRAR");
           if (res.status == 200 && res.data.hasError == false) {
