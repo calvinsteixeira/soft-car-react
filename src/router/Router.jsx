@@ -8,8 +8,8 @@ export default function Router() {
     <BrowserRouter>
       <Routes>
         <Route path="/" element={<LoginView />} />
-        <Route path="/cadastrar" element={<RegisterView />} />
-        <Route path="/listagem-de-carros" element={<HomeView />} />
+        <Route path="/novo-cadastro" element={<RegisterView />} />
+        <Route path="/meus-carros" element={<HomeView />} />
       </Routes>
     </BrowserRouter>
   );

@@ -38,7 +38,7 @@ export default function LoginView() {
       <Logo src={logo} alt="logo" />
       <LoginForm></LoginForm>
       <Span>
-        Não possui conta? <Link href="cadastrar">Registre-se</Link>
+        Não possui conta? <Link href="novo-cadastro">Registre-se</Link>
       </Span>
     </View>
   );
