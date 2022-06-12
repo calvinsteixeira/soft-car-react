@@ -58,18 +58,19 @@ export default function LoginForm() {
   // METHODS
   function loginRequest(e) {
     e.preventDefault();
-
     setButtonContent(<CircularProgress size="2rem" sx={{ color: "white" }} />);
+    const credentials = {
+      username: username,
+      password: password,
+    };
+
+    JSON.stringify(credentials);
     axios
-      .post(
-        apiUrl + "/auth",
-        { username: username, password: password },
-        {
-          headers: {
-            "Content-Type": "application/json",
-          },
-        }
-      )
+      .post(apiUrl + "/auth", credentials, {
+        headers: {
+          "Content-Type": "application/json",
+        },
+      })
       .then((res) => {
         setButtonContent("ENTRAR");
         if (res.data.hasError == false) {
