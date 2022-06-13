@@ -74,6 +74,8 @@ export default function LoginForm() {
       .then((res) => {
         setButtonContent("ENTRAR");
         if (res.data.hasError == false) {
+          sessionStorage.setItem("isLogged", true);
+          window.location.href = "/meus-carros";
         }
       })
       .catch((err) => {
