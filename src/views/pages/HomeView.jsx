@@ -63,6 +63,6 @@ export default function HomeView() {
       </View>
     );
   } else {
-    window.location.hfef = "/";
+    window.location.href = "/";
   }
 }
