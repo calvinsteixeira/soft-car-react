@@ -28,36 +28,41 @@ const CardsContainer = styled.div`
 export default function HomeView() {
   const apiUrl = "https://authenticateapi.herokuapp.com";
   const [cars, setCars] = useState([]);
+  const isLogged = sessionStorage.getItem("isLogged");
 
-  useEffect(() => {
-    axios
-      .get(
-        apiUrl + "/get-cars",
-        {},
-        {
-          headers: {
-            "Content-Type": "application/json",
-          },
-        }
-      )
-      .then((res) => setCars(res.data.cars))
-      .catch((err) => console.log(err.response));
-  }, []);
+  if (isLogged) {
+    useEffect(() => {
+      axios
+        .get(
+          apiUrl + "/get-cars",
+          {},
+          {
+            headers: {
+              "Content-Type": "application/json",
+            },
+          }
+        )
+        .then((res) => setCars(res.data.cars))
+        .catch((err) => console.log(err.response));
+    }, []);
 
-  return (
-    <View>
-      <CardsContainer>
-        {cars.map((car) => {
-          return (
-            <CarCard
-              key={car.id}
-              model={car.modelo}
-              description={car.descricao}
-              price={car.preco}
-            />
-          );
-        })}
-      </CardsContainer>
-    </View>
-  );
+    return (
+      <View>
+        <CardsContainer>
+          {cars.map((car) => {
+            return (
+              <CarCard
+                key={car.id}
+                model={car.modelo}
+                description={car.descricao}
+                price={car.preco}
+              />
+            );
+          })}
+        </CardsContainer>
+      </View>
+    );
+  } else {
+    window.location.hfef = "/";
+  }
 }
