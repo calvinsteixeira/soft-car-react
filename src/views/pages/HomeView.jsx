@@ -30,7 +30,7 @@ export default function HomeView() {
   const [cars, setCars] = useState([]);
   const isLogged = sessionStorage.getItem("isLogged");
 
-  if (isLogged) {
+  if (isLogged == true) {
     useEffect(() => {
       axios
         .get(
