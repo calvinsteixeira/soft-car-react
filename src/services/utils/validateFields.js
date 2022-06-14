@@ -47,7 +47,37 @@ export default function validateFields(fields) {
         fields.cpf
       )
     ) {
-      errors.cpf = "Campo em formato inválido!";
+      errors.cpf = "Use o formato correto 999.999.999-99!";
+    }
+  }
+
+  // VERIFICAÇÃO DO CAMPO USERNAME
+  if (fields.hasOwnProperty("username")) {
+    if (validateMethods.isEmptyField(fields.username)) {
+      errors.username = "Campo obrigatório!";
+    } else if (validateMethods.mismatchLength(4, 10, fields.username)) {
+      errors.username = "O campo precisa ter entre 4 e 10 caracteres";
+    } else if (
+      validateMethods.mismatchPattern(/^([a-z]{1,})$/, fields.username)
+    ) {
+      errors.username = "Use apenas letras minusculas, sem espaços ou símbolos";
+    }
+  }
+
+  // VERIRICAÇÃO DO CAMPO PASSWORD
+  if (fields.hasOwnProperty("password")) {
+    if (validateMethods.isEmptyField(fields.password)) {
+      errors.password = "Campo obrigatório!";
+    } else if (validateMethods.mismatchLength(4, 10, fields.password)) {
+      errors.password = "O campo precisa ter entre 4 e 10 caracteres";
+    } else if (
+      validateMethods.mismatchPattern(
+        /^(?=.*[A-Za-z])(?=.*\d)(?=.*[@$!%*#?&])[A-Za-z\d@$!%*#?&]{8,}$/,
+        fields.password
+      )
+    ) {
+      errors.password =
+        "Sua senha precisa ter pelo menos 1 símbolo, 1 letra minuscula e 1 número";
     }
   }
 
