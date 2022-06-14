@@ -52,6 +52,8 @@ export default function RegisterForm() {
         >
           {() => (
             <TextInput
+              inputError={fieldsErrors.cpf ? true : false}
+              inputTextError={fieldsErrors.cpf}
               name={"cpf"}
               label={"Seu CPF"}
               variant={"outlined"}
@@ -68,6 +70,8 @@ export default function RegisterForm() {
         <TextInput
           inputError={fieldsErrors.username ? true : false}
           inputTextError={fieldsErrors.username}
+          inputError={fieldsErrors.username ? true : false}
+          inputTextError={fieldsErrors.username}
           name={"username"}
           label={"Seu usuário"}
           variant={"outlined"}
@@ -75,6 +79,8 @@ export default function RegisterForm() {
           event={(e) => setUsername(e.target.value)}
         />
         <TextInput
+          inputError={fieldsErrors.password ? true : false}
+          inputTextError={fieldsErrors.password}
           name={"password"}
           label={"Sua senha"}
           variant={"outlined"}
