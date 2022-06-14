@@ -132,7 +132,7 @@ export default function RegisterForm() {
 
     const fields = {
       name: name,
-      CPF: cpf,
+      cpf: cpf,
       username: username,
       password: password,
     };
