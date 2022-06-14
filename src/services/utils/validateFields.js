@@ -33,5 +33,5 @@ export default function validateFields(fields) {
     }
   }
 
-  console.log(errors);
+  return errors;
 }
