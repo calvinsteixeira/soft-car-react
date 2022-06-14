@@ -70,8 +70,6 @@ export default function RegisterForm() {
         <TextInput
           inputError={fieldsErrors.username ? true : false}
           inputTextError={fieldsErrors.username}
-          inputError={fieldsErrors.username ? true : false}
-          inputTextError={fieldsErrors.username}
           name={"username"}
           label={"Seu usuário"}
           variant={"outlined"}
