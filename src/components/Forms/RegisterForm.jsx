@@ -38,7 +38,7 @@ export default function RegisterForm() {
           inputError={fieldsErrors.name ? true : false}
           inputTextError={fieldsErrors.name}
           name={"name"}
-          label={"Seu nome"}
+          label={"Seu nome completo"}
           variant={"outlined"}
           type={"text"}
           event={(e) => setName(e.target.value)}
