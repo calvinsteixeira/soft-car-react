@@ -9,6 +9,8 @@ export default function TextInput({
   event,
   required,
   width,
+  inputError,
+  inputTextError,
 }) {
   return (
     <TextField
@@ -37,6 +39,8 @@ export default function TextInput({
           },
         },
       }}
+      error={inputError}
+      helperText={inputTextError}
       name={name}
       label={label}
       variant={variant}

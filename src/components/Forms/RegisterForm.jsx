@@ -7,6 +7,7 @@ import ErrorAlert from "../Alert/ErrorAlert";
 import SuccessAlert from "../Alert/SuccessAlert";
 import CircularProgress from "@mui/material/CircularProgress";
 import InputMask from "react-input-mask";
+import validateFields from "../../services/utils/validateFields";
 
 const Form = styled.form`
   @media (min-width: 480px) {
@@ -28,12 +29,14 @@ export default function RegisterForm() {
   const [errorAlertText, setErrorAlertText] = useState();
   const [successAlertText, setSuccessAlertText] = useState();
   const [buttonContent, setButtonContent] = useState("CADASTRAR");
+  const [fieldsErrors, setFieldsErrors] = useState({});
 
   return (
     <>
       <Form onSubmit={registerUser}>
         <TextInput
-          required={true}
+          inputError={fieldsErrors.name ? true : false}
+          inputTextError={fieldsErrors.name}
           name={"name"}
           label={"Seu nome"}
           variant={"outlined"}
@@ -49,7 +52,6 @@ export default function RegisterForm() {
         >
           {() => (
             <TextInput
-              required={true}
               name={"cpf"}
               label={"Seu CPF"}
               variant={"outlined"}
@@ -59,7 +61,8 @@ export default function RegisterForm() {
         </InputMask>
 
         <TextInput
-          required={true}
+          inputError={fieldsErrors.username ? true : false}
+          inputTextError={fieldsErrors.username}
           name={"username"}
           label={"Seu usuário"}
           variant={"outlined"}
@@ -67,7 +70,6 @@ export default function RegisterForm() {
           event={(e) => setUsername(e.target.value)}
         />
         <TextInput
-          required={true}
           name={"password"}
           label={"Sua senha"}
           variant={"outlined"}
@@ -118,46 +120,56 @@ export default function RegisterForm() {
 
   function registerUser(e) {
     e.preventDefault();
-    setButtonContent(<CircularProgress size="2rem" sx={{ color: "white" }} />);
-    const credentials = {
+
+    const fields = {
       name: name,
-      CPF: cpf.replace(/[.-]/g, ""),
+      CPF: cpf,
       username: username,
       password: password,
     };
-    JSON.stringify(credentials);
-    setTimeout(() => {
-      axios
-        .post(apiUrl + "/register-user", credentials, {
-          headers: {
-            "Content-Type": "application/json",
-          },
-        })
-        .then((res) => {
-          setButtonContent("CADASTRAR");
-          if (res.status == 200 && res.data.hasError == false) {
-            setSuccessAlertText("Cadastro realizado com sucesso!");
-            setTimeout(() => {
-              window.location.reload();
-            }, 3000);
-          }
-        })
-        .catch((err) => {
-          setButtonContent("CADASTRAR");
-          if (err.code == "ERR_NETWORK") {
-            setErrorAlertText(
-              "Falha na conexão com o servidor ao realizar o cadastro"
-            );
-            setTimeout(() => {
-              window.location.reload();
-            }, 3000);
-          } else if (err.response.status == 409) {
-            setErrorAlertText("O CPF informado já possui cadastro");
-            setTimeout(() => {
-              window.location.reload();
-            }, 3000);
-          }
-        });
-    }, 2000);
+
+    const errors = validateFields(fields);
+    if (Object.keys(errors).length == 0) {
+      setFieldsErrors({});
+      JSON.stringify(fields);
+      setButtonContent(
+        <CircularProgress size="2rem" sx={{ color: "white" }} />
+      );
+      setTimeout(() => {
+        axios
+          .post(apiUrl + "/register-user", fields, {
+            headers: {
+              "Content-Type": "application/json",
+            },
+          })
+          .then((res) => {
+            setButtonContent("CADASTRAR");
+            if (res.status == 200 && res.data.hasError == false) {
+              setSuccessAlertText("Cadastro realizado com sucesso!");
+              setTimeout(() => {
+                window.location.reload();
+              }, 3000);
+            }
+          })
+          .catch((err) => {
+            setButtonContent("CADASTRAR");
+            if (err.code == "ERR_NETWORK") {
+              setErrorAlertText(
+                "Falha na conexão com o servidor ao realizar o cadastro"
+              );
+              setTimeout(() => {
+                window.location.reload();
+              }, 3000);
+            } else if (err.response.status == 409) {
+              setErrorAlertText("O CPF informado já possui cadastro");
+              setTimeout(() => {
+                window.location.reload();
+              }, 3000);
+            }
+          });
+      }, 2000);
+    } else {
+      setFieldsErrors(errors);
+    }
   }
 }
