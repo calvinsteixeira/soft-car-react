@@ -38,7 +38,7 @@ export default function RegisterForm() {
           inputError={fieldsErrors.name ? true : false}
           inputTextError={fieldsErrors.name}
           name={"name"}
-          label={"Seu nome"}
+          label={"Seu nome completo"}
           variant={"outlined"}
           type={"text"}
           event={(e) => setName(e.target.value)}
@@ -55,7 +55,12 @@ export default function RegisterForm() {
               name={"cpf"}
               label={"Seu CPF"}
               variant={"outlined"}
-              event={(e) => setCpf(e.target.value)}
+              event={(e) => {
+                if (e.target.value.length > 14) {
+                  e.target.value = e.target.value.substring(0, 14);
+                }
+                setCpf(e.target.value);
+              }}
             />
           )}
         </InputMask>
