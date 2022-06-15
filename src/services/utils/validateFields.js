@@ -28,10 +28,15 @@ export default function validateFields(fields) {
   if (fields.hasOwnProperty("name")) {
     if (validateMethods.isEmptyField(fields.name)) {
       errors.name = "Campo obrigatório!";
-    } else if (validateMethods.mismatchLength(4, 20, fields.name)) {
+    } else if (validateMethods.mismatchLength(4, 80, fields.name)) {
       errors.name = "O campo precisa ter entre 4 e 20 caracteres";
-    } else if (validateMethods.mismatchPattern(/\s\w{3}/g, fields.name)) {
-      errors.name = "Digite seu nome completo";
+    } else if (
+      validateMethods.mismatchPattern(
+        /^(([A-z]+)\s+([A-z]+)){1,}$/,
+        fields.name
+      )
+    ) {
+      errors.name = "Digite um nome e sobrenome válidos";
     }
   }
 
