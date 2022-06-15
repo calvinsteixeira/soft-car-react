@@ -11,6 +11,7 @@ const View = styled.div`
   flex-direction: column;
   align-items: center;
   justify-content: center;
+  padding: 1rem 0;
 `;
 
 const Logo = styled.img`
