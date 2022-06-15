@@ -128,7 +128,7 @@ export default function RegisterForm() {
 
     const fields = {
       name: name,
-      cpf: cpf.replace(/[.-]/g, ""),
+      cpf: cpf,
       username: username,
       password: password,
     };
@@ -136,6 +136,7 @@ export default function RegisterForm() {
     const errors = validateFields(fields);
     if (Object.keys(errors).length == 0) {
       setFieldsErrors({});
+      fields.cpf = cpf.replace(/[.-]/g, "");
       JSON.stringify(fields);
       setButtonContent(
         <CircularProgress size="2rem" sx={{ color: "white" }} />
