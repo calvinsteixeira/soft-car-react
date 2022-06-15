@@ -48,7 +48,7 @@ export default function validateFields(fields) {
       errors.cpf = "Digite seu CPF completo";
     } else if (
       validateMethods.mismatchPattern(
-        /[0-9]{3}.[0-9]{3}.[0-9]{3}-[0-9]{2}./,
+        /[0-9]{3}.[0-9]{3}.[0-9]{3}-[0-9]{2}/,
         fields.cpf
       )
     ) {
