@@ -128,7 +128,7 @@ export default function RegisterForm() {
 
     const fields = {
       name: name,
-      cpf: cpf,
+      cpf: cpf.replace(/[.-]/g, ""),
       username: username,
       password: password,
     };
