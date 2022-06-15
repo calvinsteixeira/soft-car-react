@@ -13,7 +13,7 @@ const Form = styled.form`
   display: flex;
   flex-direction: column;
   width: 14rem;
-  gap: 1.8rem;
+  gap: 0.8rem;
 `;
 
 export default function LoginForm() {
