@@ -5,7 +5,8 @@ import logo from "../../public/static/images/logo.svg";
 const View = styled.div`
   background-color: #252422;
   width: 100vw;
-  height: 100vh;
+  min-height: 100vh;
+  height: auto;
   display: flex;
   flex-direction: column;
   align-items: center;
