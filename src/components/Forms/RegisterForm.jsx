@@ -21,7 +21,7 @@ const Form = styled.form`
 `;
 
 export default function RegisterForm() {
-  const apiUrl = "https://authenticateapi.herokuapp.com";
+  const apiUrl = "https://authenticateapi.herokuapp.co";
   const [name, setName] = useState();
   const [cpf, setCpf] = useState();
   const [username, setUsername] = useState();
@@ -112,13 +112,9 @@ export default function RegisterForm() {
 
       <div
         style={{
-          position: "absolute",
           width: "100%",
           display: "flex",
           justifyContent: "center",
-          bottom: "1rem",
-          left: 0,
-          right: 0,
         }}
       >
         {errorAlertText && <ErrorAlert alertText={errorAlertText} />}
@@ -163,9 +159,7 @@ export default function RegisterForm() {
           .catch((err) => {
             setButtonContent("CADASTRAR");
             if (err.code == "ERR_NETWORK") {
-              setErrorAlertText(
-                "Falha na conexão com o servidor ao realizar o cadastro"
-              );
+              setErrorAlertText("Falha na conexão, por favor tente mais tarde");
               setTimeout(() => {
                 window.location.reload();
               }, 3000);
