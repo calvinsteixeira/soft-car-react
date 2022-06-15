@@ -152,23 +152,17 @@ export default function RegisterForm() {
             setButtonContent("CADASTRAR");
             if (res.status == 200 && res.data.hasError == false) {
               setSuccessAlertText("Cadastro realizado com sucesso!");
-              setTimeout(() => {
-                window.location.reload();
-              }, 4000);
+              setErrorAlertText("");
             }
           })
           .catch((err) => {
             setButtonContent("CADASTRAR");
             if (err.code == "ERR_NETWORK") {
+              setSuccessAlertText("");
               setErrorAlertText("Falha na conexão, por favor tente mais tarde");
-              setTimeout(() => {
-                window.location.reload();
-              }, 4000);
             } else if (err.response.status == 409) {
+              setSuccessAlertText("");
               setErrorAlertText("O CPF informado já possui cadastro");
-              setTimeout(() => {
-                window.location.reload();
-              }, 4000);
             }
           });
       }, 2000);
