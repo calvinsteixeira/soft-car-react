@@ -44,9 +44,14 @@ export default function validateFields(fields) {
   if (fields.hasOwnProperty("cpf")) {
     if (validateMethods.isEmptyField(fields.cpf)) {
       errors.cpf = "Campo obrigatório!";
-    } else if (validateMethods.mismatchLength(11, 11, fields.cpf)) {
+    } else if (validateMethods.mismatchLength(14, 14, fields.cpf)) {
       errors.cpf = "Digite seu CPF completo";
-    } else if (validateMethods.mismatchPattern(/[0-9]{11}/, fields.cpf)) {
+    } else if (
+      validateMethods.mismatchPattern(
+        /[0-9]{3}.[0-9]{3}.[0-9]{3}-[0-9]{2}./,
+        fields.cpf
+      )
+    ) {
       errors.cpf = "Use o formato correto 999.999.999-99!";
     }
   }
