@@ -21,7 +21,7 @@ const Form = styled.form`
 `;
 
 export default function RegisterForm() {
-  const apiUrl = "https://authenticateapi.herokuapp.co";
+  const apiUrl = "https://authenticateapi.herokuapp.com";
   const [name, setName] = useState();
   const [cpf, setCpf] = useState();
   const [username, setUsername] = useState();
@@ -153,7 +153,7 @@ export default function RegisterForm() {
               setSuccessAlertText("Cadastro realizado com sucesso!");
               setTimeout(() => {
                 window.location.reload();
-              }, 3000);
+              }, 4000);
             }
           })
           .catch((err) => {
@@ -162,12 +162,12 @@ export default function RegisterForm() {
               setErrorAlertText("Falha na conexão, por favor tente mais tarde");
               setTimeout(() => {
                 window.location.reload();
-              }, 3000);
+              }, 4000);
             } else if (err.response.status == 409) {
               setErrorAlertText("O CPF informado já possui cadastro");
               setTimeout(() => {
                 window.location.reload();
-              }, 3000);
+              }, 4000);
             }
           });
       }, 2000);
