@@ -24,7 +24,8 @@ export function LargeMenu() {
         ["@media (max-width:480px)"]: {
           display: "none",
         },
-        background: "white",
+        background: "#f7f7f7",
+        boxShadow: "#3b3b3b 0px 4px 15px",
         color: "#EB5E28",
       }}
       position="fixed"
