@@ -147,6 +147,7 @@ export default function RegisterForm() {
 
       <div
         style={{
+          marginTop: "1rem",
           width: "100%",
           display: "flex",
           justifyContent: "center",
