@@ -1,4 +1,4 @@
-import RegisterForm from "../../components/Forms/RegisterForm";
+import { RegisterForm } from "../../components/Forms/RegisterForm";
 import styled from "styled-components";
 import logo from "../../public/static/images/logo.svg";
 
@@ -20,7 +20,7 @@ const Logo = styled.img`
   margin-bottom: 2rem;
 `;
 
-export default function LoginView() {
+export function RegisterView() {
   return (
     <View>
       <Logo src={logo} alt="logo" />

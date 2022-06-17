@@ -1,5 +1,5 @@
 import styled from "styled-components";
-import CarCard from "../../components/DataShow/Card";
+import { CarCard } from "../../components/DataShow/Card";
 import { useState } from "react";
 import { useEffect } from "react";
 import axios from "axios";
@@ -25,7 +25,7 @@ const CardsContainer = styled.div`
   gap: 3rem;
 `;
 
-export default function HomeView() {
+export function HomeView() {
   const apiUrl = "https://authenticateapi.herokuapp.com";
   const [cars, setCars] = useState([]);
   const isLogged = sessionStorage.getItem("isLogged");

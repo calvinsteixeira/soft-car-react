@@ -1,4 +1,4 @@
-export default function validateFields(fields) {
+export function validateFields(fields) {
   const errors = {};
   const validateMethods = {
     isEmptyField: (field) => {

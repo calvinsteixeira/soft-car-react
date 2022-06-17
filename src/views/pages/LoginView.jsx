@@ -1,4 +1,4 @@
-import LoginForm from "../../components/Forms/LoginForm";
+import { LoginForm } from "../../components/Forms/LoginForm";
 import styled from "styled-components";
 import logo from "../../public/static/images/logo.svg";
 
@@ -33,7 +33,7 @@ const Logo = styled.img`
   margin-bottom: 2rem;
 `;
 
-export default function LoginView() {
+export function LoginView() {
   return (
     <View>
       <Logo src={logo} alt="logo" />

@@ -1,7 +1,7 @@
 import { TextField } from "@mui/material";
 import colors from "../../public/css/colors";
 
-export default function TextInput({
+export function TextInput({
   label,
   variant,
   type,

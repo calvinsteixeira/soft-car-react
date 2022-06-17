@@ -1,9 +1,9 @@
 import { useState } from "react";
-import TextInput from "../Inputs/TextInput";
-import ButtonComponent from "../Buttons/ButtonComponent";
+import { TextInput } from "../Inputs/TextInput";
+import { ButtonComponent } from "../Buttons/ButtonComponent";
 import styled from "styled-components";
 import axios from "axios";
-import ErrorAlert from "../Alert/ErrorAlert";
+import { ErrorAlert } from "../Alert/ErrorAlert";
 import CircularProgress from "@mui/material/CircularProgress";
 import InputAdornment from "@mui/material/InputAdornment";
 import Visibility from "@mui/icons-material/Visibility";
@@ -20,7 +20,7 @@ const Form = styled.form`
   gap: 0.8rem;
 `;
 
-export default function LoginForm() {
+export function LoginForm() {
   const apiUrl = "https://authenticateapi.herokuapp.com";
   const [username, setUsername] = useState();
   const [password, setPassword] = useState();
