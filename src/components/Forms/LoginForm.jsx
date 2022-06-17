@@ -11,7 +11,7 @@ import VisibilityOff from "@mui/icons-material/VisibilityOff";
 import IconButton from "@mui/material/IconButton";
 
 const Form = styled.form`
-  @media (min-width: 425px) {
+  @media (min-width: 480px) {
     width: 16rem;
   }
   display: flex;
