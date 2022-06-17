@@ -11,13 +11,20 @@ export function MobileNav() {
 
   return (
     <Paper
-      sx={{ position: "fixed", bottom: 0, left: 0, right: 0 }}
+      sx={{
+        position: "fixed",
+        bottom: 0,
+        left: 0,
+        right: 0,
+        boxShadow: "#3b3b3b 0px 7px 30px",
+      }}
       elevation={3}
     >
       <BottomNavigation
         sx={{
           backgroundColor: "#f7f7f7",
-          "& .Mui-selected": {
+
+          ".Mui-selected": {
             color: "#EB5E28",
           },
         }}
@@ -27,9 +34,39 @@ export function MobileNav() {
           setValue(newValue);
         }}
       >
-        <BottomNavigationAction label="Recents" icon={<RestoreIcon />} />
-        <BottomNavigationAction label="Favorites" icon={<FavoriteIcon />} />
-        <BottomNavigationAction label="Archive" icon={<ArchiveIcon />} />
+        <BottomNavigationAction
+          sx={{
+            "&.Mui-selected": {
+              color: "#EB5E28",
+            },
+          }}
+          label="Recents"
+          icon={
+            <RestoreIcon
+              sx={{
+                fill: "#EB5E28",
+              }}
+            />
+          }
+        />
+        <BottomNavigationAction
+          sx={{
+            "&.Mui-selected": {
+              color: "#EB5E28",
+            },
+          }}
+          label="Favorites"
+          icon={<FavoriteIcon sx={{ fill: "#EB5E28" }} />}
+        />
+        <BottomNavigationAction
+          sx={{
+            "&.Mui-selected": {
+              color: "#EB5E28",
+            },
+          }}
+          label="Archive"
+          icon={<ArchiveIcon sx={{ fill: "#EB5E28" }} />}
+        />
       </BottomNavigation>
     </Paper>
   );
