@@ -5,6 +5,8 @@ import { useEffect } from "react";
 import axios from "axios";
 import { CompactMenu } from "../../components/Menus/CompactMenu";
 import { LargeMenu } from "../../components/Menus/LargeMenu";
+import Fab from "@mui/material/Fab";
+import AddIcon from "@mui/icons-material/Add";
 
 const View = styled.div`
   background-color: #252422;
@@ -64,6 +66,21 @@ export function HomeView() {
         </CardsContainer>
         <CompactMenu />
         <LargeMenu />
+        <Fab
+          sx={{
+            backgroundColor: "#EB5E28 !important",
+            svg: {
+              fill: "white",
+            },
+            position: "fixed",
+            bottom: "1rem",
+            right: "1rem",
+          }}
+          size={"medium"}
+          aria-label="add"
+        >
+          <AddIcon />
+        </Fab>
       </View>
     );
   } else {
