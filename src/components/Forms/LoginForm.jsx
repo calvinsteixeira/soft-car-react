@@ -33,62 +33,72 @@ export default function LoginForm() {
   }
 
   return (
-    <Form onSubmit={loginRequest}>
-      <TextInput
-        required={true}
-        name={"username"}
-        label={"Seu usuário"}
-        variant={"outlined"}
-        type={"text"}
-        event={(e) => setUsername(e.target.value)}
-      />
-      <TextInput
-        required={true}
-        name={"password"}
-        label={"Sua senha"}
-        variant={"outlined"}
-        type={"password"}
-        event={(e) => setPassword(e.target.value)}
-        endAdornment={
-          <InputAdornment position="end">
-            <IconButton
-              aria-label="Alterar a visibilidade do campo senha"
-              onClick={handleClickShowPassword}
-              edge="end"
-            >
-              {showPassword == false ? (
-                <VisibilityOff
-                  sx={{
-                    fill: "white",
-                    marginRight: "0.3rem",
-                  }}
-                />
-              ) : (
-                <Visibility
-                  sx={{
-                    fill: "white",
+    <>
+      <Form onSubmit={loginRequest}>
+        <TextInput
+          required={true}
+          name={"username"}
+          label={"Seu usuário"}
+          variant={"outlined"}
+          type={"text"}
+          event={(e) => setUsername(e.target.value)}
+        />
+        <TextInput
+          required={true}
+          name={"password"}
+          label={"Sua senha"}
+          variant={"outlined"}
+          type={"password"}
+          event={(e) => setPassword(e.target.value)}
+          endAdornment={
+            <InputAdornment position="end">
+              <IconButton
+                aria-label="Alterar a visibilidade do campo senha"
+                onClick={handleClickShowPassword}
+                edge="end"
+              >
+                {showPassword == false ? (
+                  <VisibilityOff
+                    sx={{
+                      fill: "white",
+                      marginRight: "0.3rem",
+                    }}
+                  />
+                ) : (
+                  <Visibility
+                    sx={{
+                      fill: "white",
 
-                    marginRight: "0.3rem",
-                  }}
-                />
-              )}
-            </IconButton>
-          </InputAdornment>
-        }
-      />
-      <ButtonComponent
-        bgColor={"#EB5E28"}
-        bgHover={"#e17f59"}
-        variant={"contained"}
-        height={"3rem"}
-        type={"submit"}
-        marginTop={"1rem"}
-        buttonContent={buttonContent}
-        width={"100%"}
-      />
-
-      {alertText && <ErrorAlert alertText={alertText} />}
-    </Form>
+                      marginRight: "0.3rem",
+                    }}
+                  />
+                )}
+              </IconButton>
+            </InputAdornment>
+          }
+        />
+        <ButtonComponent
+          bgColor={"#EB5E28"}
+          bgHover={"#e17f59"}
+          variant={"contained"}
+          height={"3rem"}
+          type={"submit"}
+          marginTop={"1rem"}
+          buttonContent={buttonContent}
+          width={"100%"}
+        />
+      </Form>
+      <div
+        style={{
+          marginTop: "1rem",
+          width: "100%",
+          display: "flex",
+          justifyContent: "center",
+        }}
+      >
+        {alertText && <ErrorAlert alertText={alertText} />}
+      </div>
+    </>
   );
 
   // METHODS
