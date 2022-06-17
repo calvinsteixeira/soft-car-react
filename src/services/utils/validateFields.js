@@ -77,7 +77,7 @@ export function validateFields(fields) {
       errors.password = "O campo precisa ter entre 4 e 10 caracteres";
     } else if (
       validateMethods.mismatchPattern(
-        /^(?=.*[A-Za-z])(?=.*\d)(?=.*[@$!%*#?&])[A-Za-z\d@$!%*#?&]{8,}$/,
+        /^(?=.*[A-Za-z])(?=.*\d)(?=.*[@$!%*#?&])[A-Za-z\d@$!%*#?&]{10,}$/,
         fields.password
       )
     ) {
