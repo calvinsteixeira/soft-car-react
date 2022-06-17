@@ -36,7 +36,6 @@ export function LoginForm() {
     <>
       <Form onSubmit={loginRequest}>
         <TextInput
-          required={true}
           name={"username"}
           label={"Seu usuário"}
           variant={"outlined"}
@@ -44,7 +43,6 @@ export function LoginForm() {
           event={(e) => setUsername(e.target.value)}
         />
         <TextInput
-          required={true}
           name={"password"}
           label={"Sua senha"}
           variant={"outlined"}
