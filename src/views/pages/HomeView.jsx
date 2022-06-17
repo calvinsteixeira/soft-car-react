@@ -4,6 +4,7 @@ import { useState } from "react";
 import { useEffect } from "react";
 import axios from "axios";
 import { CompactMenu } from "../../components/Menus/CompactMenu";
+import { LargeMenu } from "../../components/Menus/LargeMenu";
 
 const View = styled.div`
   background-color: #252422;
@@ -62,6 +63,7 @@ export function HomeView() {
           })}
         </CardsContainer>
         <CompactMenu />
+        <LargeMenu />
       </View>
     );
   } else {
