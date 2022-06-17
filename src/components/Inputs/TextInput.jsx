@@ -23,6 +23,13 @@ export function TextInput({
         input: {
           width: width,
           color: colors.textPrimary,
+          ":-webkit-autofill, :-webkit-autofill:hover, :-webkit-autofill:focus, :-webkit-autofill:active":
+            {
+              boxShadow: "0 0 0 30px #532b1b inset !important",
+            },
+          ":-webkit-autofill": {
+            textFillColor: "white !important",
+          },
         },
         label: {
           color: colors.textPrimary,
