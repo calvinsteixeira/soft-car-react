@@ -15,6 +15,12 @@ export function MobileNav() {
       elevation={3}
     >
       <BottomNavigation
+        sx={{
+          backgroundColor: "#f7f7f7",
+          "& .Mui-selected": {
+            color: "#EB5E28",
+          },
+        }}
         showLabels
         value={value}
         onChange={(event, newValue) => {
