@@ -48,7 +48,7 @@ export function LoginForm() {
           name={"password"}
           label={"Sua senha"}
           variant={"outlined"}
-          type={"password"}
+          type={showPassword ? "text" : "password"}
           event={(e) => setPassword(e.target.value)}
           endAdornment={
             <InputAdornment position="end">
