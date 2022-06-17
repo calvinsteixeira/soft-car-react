@@ -3,6 +3,7 @@ import { CarCard } from "../../components/DataShow/Card";
 import { useState } from "react";
 import { useEffect } from "react";
 import axios from "axios";
+import { MobileNav } from "../../components/Menus/MobileNav";
 
 const View = styled.div`
   background-color: #252422;
@@ -60,6 +61,7 @@ export function HomeView() {
             );
           })}
         </CardsContainer>
+        <MobileNav />
       </View>
     );
   } else {
