@@ -82,6 +82,7 @@ export default function LoginForm() {
         variant={"contained"}
         height={"3rem"}
         type={"submit"}
+        marginTop={"1rem"}
         buttonContent={buttonContent}
         width={"100%"}
       />
