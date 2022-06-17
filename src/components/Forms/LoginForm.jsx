@@ -5,6 +5,10 @@ import styled from "styled-components";
 import axios from "axios";
 import ErrorAlert from "../Alert/ErrorAlert";
 import CircularProgress from "@mui/material/CircularProgress";
+import InputAdornment from "@mui/material/InputAdornment";
+import Visibility from "@mui/icons-material/Visibility";
+import VisibilityOff from "@mui/icons-material/VisibilityOff";
+import IconButton from "@mui/material/IconButton";
 
 const Form = styled.form`
   @media (min-width: 480px) {
@@ -22,6 +26,11 @@ export default function LoginForm() {
   const [password, setPassword] = useState();
   const [alertText, setAlertText] = useState();
   const [buttonContent, setButtonContent] = useState("ENTRAR");
+  const [showPassword, setShowPassword] = useState(false);
+
+  function handleClickShowPassword() {
+    setShowPassword(!showPassword);
+  }
 
   return (
     <Form onSubmit={loginRequest}>
@@ -40,6 +49,32 @@ export default function LoginForm() {
         variant={"outlined"}
         type={"password"}
         event={(e) => setPassword(e.target.value)}
+        endAdornment={
+          <InputAdornment position="end">
+            <IconButton
+              aria-label="Alterar a visibilidade do campo senha"
+              onClick={handleClickShowPassword}
+              edge="end"
+            >
+              {showPassword == false ? (
+                <VisibilityOff
+                  sx={{
+                    fill: "white",
+                    marginRight: "0.3rem",
+                  }}
+                />
+              ) : (
+                <Visibility
+                  sx={{
+                    fill: "white",
+
+                    marginRight: "0.3rem",
+                  }}
+                />
+              )}
+            </IconButton>
+          </InputAdornment>
+        }
       />
       <ButtonComponent
         bgColor={"#EB5E28"}

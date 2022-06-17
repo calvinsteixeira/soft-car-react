@@ -8,6 +8,10 @@ import SuccessAlert from "../Alert/SuccessAlert";
 import CircularProgress from "@mui/material/CircularProgress";
 import InputMask from "react-input-mask";
 import validateFields from "../../services/utils/validateFields";
+import InputAdornment from "@mui/material/InputAdornment";
+import Visibility from "@mui/icons-material/Visibility";
+import VisibilityOff from "@mui/icons-material/VisibilityOff";
+import IconButton from "@mui/material/IconButton";
 
 const Form = styled.form`
   @media (min-width: 480px) {
@@ -30,6 +34,11 @@ export default function RegisterForm() {
   const [successAlertText, setSuccessAlertText] = useState();
   const [buttonContent, setButtonContent] = useState("CADASTRAR");
   const [fieldsErrors, setFieldsErrors] = useState({});
+  const [showPassword, setShowPassword] = useState(false);
+
+  function handleClickShowPassword() {
+    setShowPassword(!showPassword);
+  }
 
   return (
     <>
@@ -82,8 +91,34 @@ export default function RegisterForm() {
           name={"password"}
           label={"Sua senha"}
           variant={"outlined"}
-          type={"password"}
+          type={showPassword ? "text" : "password"}
           event={(e) => setPassword(e.target.value)}
+          endAdornment={
+            <InputAdornment position="end">
+              <IconButton
+                aria-label="Alterar a visibilidade do campo senha"
+                onClick={handleClickShowPassword}
+                edge="end"
+              >
+                {showPassword == false ? (
+                  <VisibilityOff
+                    sx={{
+                      fill: "white",
+                      marginRight: "0.3rem",
+                    }}
+                  />
+                ) : (
+                  <Visibility
+                    sx={{
+                      fill: "white",
+
+                      marginRight: "0.3rem",
+                    }}
+                  />
+                )}
+              </IconButton>
+            </InputAdornment>
+          }
         />
         <ButtonComponent
           width={"100%"}
