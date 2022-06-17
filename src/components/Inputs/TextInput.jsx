@@ -11,6 +11,7 @@ export default function TextInput({
   width,
   inputError,
   inputTextError,
+  endAdornment,
 }) {
   return (
     <TextField
@@ -39,6 +40,7 @@ export default function TextInput({
           },
         },
       }}
+      InputProps={{ endAdornment: endAdornment }}
       error={inputError}
       helperText={inputTextError}
       name={name}
