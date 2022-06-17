@@ -73,11 +73,11 @@ export function validateFields(fields) {
   if (fields.hasOwnProperty("password")) {
     if (validateMethods.isEmptyField(fields.password)) {
       errors.password = "Campo obrigatório!";
-    } else if (validateMethods.mismatchLength(4, 10, fields.password)) {
-      errors.password = "O campo precisa ter entre 4 e 10 caracteres";
+    } else if (validateMethods.mismatchLength(4, 12, fields.password)) {
+      errors.password = "O campo precisa ter entre 4 e 12 caracteres";
     } else if (
       validateMethods.mismatchPattern(
-        /^(?=.*[A-Za-z])(?=.*\d)(?=.*[@$!%*#?&])[A-Za-z\d@$!%*#?&]{10,}$/,
+        /^(?=.*[A-Za-z])(?=.*\d)(?=.*[@$!%*#?&])[A-Za-z\d@$!%*#?&]{4,12}$/,
         fields.password
       )
     ) {
