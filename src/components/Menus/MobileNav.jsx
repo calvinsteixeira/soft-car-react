@@ -12,6 +12,10 @@ export function MobileNav() {
   return (
     <Paper
       sx={{
+        ["@media (min-width:480px)"]: {
+          display: "none",
+        },
+
         position: "fixed",
         bottom: 0,
         left: 0,
