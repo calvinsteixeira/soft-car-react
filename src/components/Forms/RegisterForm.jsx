@@ -104,15 +104,16 @@ export default function RegisterForm() {
                   <VisibilityOff
                     sx={{
                       fill: "white",
-                      marginRight: "0.3rem",
+                      marginRight: "0.5rem",
+                      fontSize: "large",
                     }}
                   />
                 ) : (
                   <Visibility
                     sx={{
                       fill: "white",
-
-                      marginRight: "0.3rem",
+                      marginRight: "0.5rem",
+                      fontSize: "large",
                     }}
                   />
                 )}
