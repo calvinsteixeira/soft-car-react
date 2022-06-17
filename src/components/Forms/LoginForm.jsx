@@ -128,7 +128,7 @@ export default function LoginForm() {
         setButtonContent("ENTRAR");
         if (err.code == "ERR_NETWORK") {
           setAlertText("Falha na conexão com o servidor ao realizar o login");
-        } else if (err.response.status == 401) {
+        } else if (err.response.status == 401 || err.response.status == 404) {
           setAlertText("Usuário ou senha incorretos!");
         }
       });
