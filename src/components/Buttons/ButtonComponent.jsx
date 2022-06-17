@@ -1,6 +1,6 @@
 import { Button } from "@mui/material";
 
-export default function ButtonComponent({
+export function ButtonComponent({
   buttonContent,
   type,
   bgColor,

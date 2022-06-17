@@ -1,13 +1,13 @@
 import { useState } from "react";
-import TextInput from "../Inputs/TextInput";
-import ButtonComponent from "../Buttons/ButtonComponent";
+import { TextInput } from "../Inputs/TextInput";
+import { ButtonComponent } from "../Buttons/ButtonComponent";
 import styled from "styled-components";
 import axios from "axios";
-import ErrorAlert from "../Alert/ErrorAlert";
-import SuccessAlert from "../Alert/SuccessAlert";
+import { ErrorAlert } from "../Alert/ErrorAlert";
+import { SuccessAlert } from "../Alert/SuccessAlert";
 import CircularProgress from "@mui/material/CircularProgress";
 import InputMask from "react-input-mask";
-import validateFields from "../../services/utils/validateFields";
+import { validateFields } from "../../services/utils/validateFields";
 import InputAdornment from "@mui/material/InputAdornment";
 import Visibility from "@mui/icons-material/Visibility";
 import VisibilityOff from "@mui/icons-material/VisibilityOff";
@@ -24,7 +24,7 @@ const Form = styled.form`
   gap: 0.8rem;
 `;
 
-export default function RegisterForm() {
+export function RegisterForm() {
   const apiUrl = "https://authenticateapi.herokuapp.com";
   const [name, setName] = useState();
   const [cpf, setCpf] = useState();

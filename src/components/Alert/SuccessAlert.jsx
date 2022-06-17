@@ -6,7 +6,7 @@ const blink = keyframes`
   to { opacity: 1; }
 `;
 
-export default function SuccessAlert({ alertText }) {
+export function SuccessAlert({ alertText }) {
   return (
     <Alert
       sx={{

@@ -1,9 +1,9 @@
 import { BrowserRouter, Routes, Route } from "react-router-dom";
-import LoginView from "../views/pages/LoginView";
-import RegisterView from "../views/pages/RegisterView";
-import HomeView from "../views/pages/HomeView";
+import { LoginView } from "../views/pages/LoginView";
+import { RegisterView } from "../views/pages/RegisterView";
+import { HomeView } from "../views/pages/HomeView";
 
-export default function Router() {
+export function Router() {
   return (
     <BrowserRouter>
       <Routes>
