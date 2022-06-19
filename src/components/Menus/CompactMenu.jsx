@@ -12,7 +12,7 @@ export function CompactMenu() {
   return (
     <Paper
       sx={{
-        ["@media (min-width:480px)"]: {
+        ["@media (min-width:481px)"]: {
           display: "none",
         },
 
