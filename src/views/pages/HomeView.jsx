@@ -14,7 +14,10 @@ const View = styled.div`
   display: flex;
   align-items: center;
   justify-content: center;
-  padding: 4rem;
+  padding: 1rem 4rem 5rem 4rem;
+  @media only screen and (min-width: 481px) {
+    padding: 5rem 4rem;
+  }
   width: 100vw;
   min-height: 100vh;
   height: auto;
