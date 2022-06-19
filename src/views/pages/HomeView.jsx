@@ -7,13 +7,17 @@ import { CompactMenu } from "../../components/Menus/CompactMenu";
 import { LargeMenu } from "../../components/Menus/LargeMenu";
 import Fab from "@mui/material/Fab";
 import AddIcon from "@mui/icons-material/Add";
+import { width } from "@mui/system";
 
 const View = styled.div`
   background-color: #252422;
   display: flex;
   align-items: center;
   justify-content: center;
-  padding: 4rem;
+  padding: 1rem 4rem 5rem 4rem;
+  @media only screen and (min-width: 481px) {
+    padding: 5rem 4rem;
+  }
   width: 100vw;
   min-height: 100vh;
   height: auto;
@@ -67,19 +71,30 @@ export function HomeView() {
         <CompactMenu />
         <LargeMenu />
         <Fab
+          variant="extended"
           sx={{
+            ["@media (max-width: 480px)"]: {
+              display: "none",
+            },
             backgroundColor: "#EB5E28 !important",
             svg: {
               fill: "white",
             },
             position: "fixed",
-            bottom: "1rem",
-            right: "1rem",
+            bottom: "1.5rem",
+            ["@media (max-width:815px)"]: {
+              right: "1rem",
+            },
+            right: "3rem",
+            color: "white",
+            display: "flex",
+            gap: "0.2rem",
           }}
           size={"medium"}
           aria-label="add"
         >
           <AddIcon />
+          Novo Carro
         </Fab>
       </View>
     );
