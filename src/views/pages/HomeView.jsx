@@ -82,6 +82,9 @@ export function HomeView() {
             },
             position: "fixed",
             bottom: "1.5rem",
+            ["@media (max-width:815px)"]: {
+              right: "1rem",
+            },
             right: "3rem",
             color: "white",
             display: "flex",
