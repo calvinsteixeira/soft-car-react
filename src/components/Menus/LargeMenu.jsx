@@ -14,8 +14,14 @@ export function LargeMenu() {
     setAnchorEl(event.currentTarget);
   };
 
-  const handleClose = () => {
+  const handleClose = (e) => {
     setAnchorEl(null);
+    const target = e.currentTarget;
+
+    if (target.textContent === "Sair") {
+      sessionStorage.removeItem("isLogged");
+      window.location.href = "/";
+    }
   };
 
   return (
@@ -61,6 +67,7 @@ export function LargeMenu() {
         >
           <MenuItem onClick={handleClose}>Perfil</MenuItem>
           <MenuItem onClick={handleClose}>Favoritos</MenuItem>
+          <MenuItem onClick={handleClose}>Sair</MenuItem>
         </Menu>
       </Toolbar>
     </AppBar>
