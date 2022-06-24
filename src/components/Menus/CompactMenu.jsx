@@ -5,9 +5,18 @@ import BottomNavigationAction from "@mui/material/BottomNavigationAction";
 import AccountCircleIcon from "@mui/icons-material/AccountCircle";
 import StarIcon from "@mui/icons-material/Star";
 import AddIcon from "@mui/icons-material/Add";
+import LogoutIcon from "@mui/icons-material/Logout";
+import { useEffect } from "react";
 
 export function CompactMenu() {
-  const [value, setValue] = useState();
+  const [menuIndex, setMenuIndex] = useState();
+
+  useEffect(() => {
+    if (menuIndex === 3) {
+      sessionStorage.removeItem("isLogged");
+      window.location.href = "/";
+    }
+  }, [menuIndex]);
 
   return (
     <Paper
@@ -33,9 +42,9 @@ export function CompactMenu() {
           },
         }}
         showLabels
-        value={value}
-        onChange={(event, newValue) => {
-          setValue(newValue);
+        value={menuIndex}
+        onChange={(event, index) => {
+          setMenuIndex(index);
         }}
       >
         <BottomNavigationAction
@@ -65,6 +74,22 @@ export function CompactMenu() {
           label="Perfil"
           icon={
             <AccountCircleIcon
+              sx={{
+                fill: "#EB5E28",
+              }}
+            />
+          }
+        />
+
+        <BottomNavigationAction
+          sx={{
+            "&.Mui-selected": {
+              color: "#EB5E28",
+            },
+          }}
+          label="Sair"
+          icon={
+            <LogoutIcon
               sx={{
                 fill: "#EB5E28",
               }}
