@@ -91,6 +91,7 @@ export function HomeView() {
           }}
           size={"medium"}
           aria-label="add"
+          href={'/novo-carro'}
         >
           <AddIcon />
           Novo Carro

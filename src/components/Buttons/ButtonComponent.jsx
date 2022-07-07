@@ -13,6 +13,7 @@ export function ButtonComponent({
   height,
   bgHover,
   bcHover,
+  component,
 }) {
   const styles = {
     "&.MuiButton-root": {
@@ -32,7 +33,13 @@ export function ButtonComponent({
     },
   };
   return (
-    <Button href={href} type={type} sx={styles} variant={variant}>
+    <Button
+      href={href}
+      type={type}
+      sx={styles}
+      variant={variant}
+      component={component}
+    >
       {buttonContent}
     </Button>
   );
