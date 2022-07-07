@@ -7,7 +7,6 @@ import { CompactMenu } from "../../components/Menus/CompactMenu";
 import { LargeMenu } from "../../components/Menus/LargeMenu";
 import Fab from "@mui/material/Fab";
 import AddIcon from "@mui/icons-material/Add";
-import { width } from "@mui/system";
 
 const View = styled.div`
   background-color: #252422;
