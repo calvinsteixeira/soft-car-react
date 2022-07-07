@@ -9,6 +9,7 @@ export function TextInput({
   event,
   required,
   width,
+  height,
   inputError,
   inputTextError,
   endAdornment,
@@ -21,6 +22,7 @@ export function TextInput({
           color: colors.textPrimary,
         },
         input: {
+          height: height,
           width: width,
           color: colors.textPrimary,
           ":-webkit-autofill, :-webkit-autofill:hover, :-webkit-autofill:focus, :-webkit-autofill:active":
