@@ -6,17 +6,9 @@ import AccountCircleIcon from "@mui/icons-material/AccountCircle";
 import StarIcon from "@mui/icons-material/Star";
 import AddIcon from "@mui/icons-material/Add";
 import LogoutIcon from "@mui/icons-material/Logout";
-import { useEffect } from "react";
 
-export function CompactMenu() {
+export function CompactMenu({ newCarEvent, logoutEvent }) {
   const [menuIndex, setMenuIndex] = useState();
-
-  useEffect(() => {
-    if (menuIndex === 3) {
-      sessionStorage.removeItem("isLogged");
-      window.location.href = "/";
-    }
-  }, [menuIndex]);
 
   return (
     <Paper
@@ -63,6 +55,7 @@ export function CompactMenu() {
             },
           }}
           label="Novo"
+          onClick={newCarEvent}
           icon={<AddIcon sx={{ fill: "#EB5E28" }} />}
         />
         <BottomNavigationAction
@@ -88,6 +81,7 @@ export function CompactMenu() {
             },
           }}
           label="Sair"
+          onClick={logoutEvent}
           icon={
             <LogoutIcon
               sx={{
