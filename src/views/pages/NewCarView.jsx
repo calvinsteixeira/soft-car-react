@@ -82,6 +82,7 @@ function NewCarForm() {
               setSelectedYear(e.target.value);
             }}
           >
+            <MenuItem value={""}>Vazio</MenuItem>
             {years.map((year, i) => {
               return (
                 <MenuItem key={i} value={year}>
