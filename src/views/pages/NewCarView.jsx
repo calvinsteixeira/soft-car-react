@@ -5,6 +5,9 @@ import { MenuItem } from "@mui/material";
 import logo from "../../public/static/images/logo.svg";
 import { useState, useEffect } from "react";
 import { Select } from "@mui/material";
+import colors from "../../public/css/colors";
+import { FormControl } from "@mui/material";
+import { InputLabel } from "@mui/material";
 
 const View = styled.div`
   background-color: #252422;
@@ -34,7 +37,7 @@ const Logo = styled.img`
 
 function NewCarForm() {
   const [years, setYears] = useState([]);
-  const [selectedYear, setSelectedYear] = useState();
+  const [selectedYear, setSelectedYear] = useState("");
   const availableYears = [];
 
   useEffect(() => {
@@ -48,21 +51,46 @@ function NewCarForm() {
     <>
       <Form>
         <TextInput label={"Digite o modelo"} />
-        <Select
-          label={"Selecione o ano"}
-          defaultValue={""}
-          onChange={(e) => {
-            setSelectedYear(e.target.value);
-          }}
-        >
-          {years.map((year, i) => {
-            return (
-              <MenuItem key={i} value={year}>
-                {year}
-              </MenuItem>
-            );
-          })}
-        </Select>
+        <FormControl fullWidth>
+          <InputLabel
+            sx={{ "&.Mui-focused": { color: "white" }, color: "white" }}
+            id="select-year-label"
+          >
+            Selecione o ano
+          </InputLabel>
+          <Select
+            sx={{
+              "&:hover, &.Mui-focused": {
+                "&& fieldset": {
+                  border: `1px solid ${colors.primaryColor}`,
+                },
+              },
+              color: "white",
+              fieldset: {
+                borderColor: colors.primaryColor,
+              },
+              svg: {
+                fill: colors.primaryColor,
+              },
+            }}
+            labelId="select-year-label"
+            value={selectedYear}
+            defaultValue=""
+            label="Selecione o ano"
+            onChange={(e) => {
+              setSelectedYear(e.target.value);
+            }}
+          >
+            {years.map((year, i) => {
+              return (
+                <MenuItem key={i} value={year}>
+                  {year}
+                </MenuItem>
+              );
+            })}
+          </Select>
+        </FormControl>
+
         <TextInput
           multiline={true}
           rows={4}
