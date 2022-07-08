@@ -34,7 +34,12 @@ function NewCarForm() {
     <>
       <Form>
         <TextInput label={"Modelo do carro"} />
-        <TextInput height={"9rem"} label={"Descrição"} />
+        <TextInput
+          multiline={true}
+          rows={4}
+          height={"9rem"}
+          label={"Descrição"}
+        />
         <ButtonComponent
           bgColor={"#EB5E28"}
           bgHover={"#e17f59"}
