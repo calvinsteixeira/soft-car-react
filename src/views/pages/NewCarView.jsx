@@ -92,13 +92,35 @@ function NewCarForm() {
             })}
           </Select>
         </FormControl>
-
         <TextInput
           multiline={true}
           rows={4}
           height={"9rem"}
           label={"Digite uma descrição"}
         />
+        <div
+          style={{
+            padding: "1rem",
+            border: `1px solid ${"#EB5E28"}`,
+            display: "flex",
+            flexDirection: "column",
+            gap: "1rem",
+          }}
+        >
+          <label
+            style={{ fontWeight: "700", color: "#e17f59" }}
+            htmlFor="files"
+          >
+            Upload de imagens
+          </label>
+          <input
+            id="files"
+            style={{ color: "white" }}
+            accept=".jpg, .png"
+            multiple
+            type="file"
+          />
+        </div>
         <ButtonComponent
           bgColor={"#EB5E28"}
           bgHover={"#e17f59"}
