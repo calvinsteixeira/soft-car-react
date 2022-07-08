@@ -13,6 +13,8 @@ export function TextInput({
   inputError,
   inputTextError,
   endAdornment,
+  multiline,
+  rows,
 }) {
   return (
     <TextField
@@ -38,6 +40,9 @@ export function TextInput({
         },
 
         "& .MuiOutlinedInput-root": {
+          "& textarea": {
+            color: colors.textPrimary,
+          },
           "& fieldset": {
             borderColor: colors.primaryColor,
           },
@@ -49,6 +54,8 @@ export function TextInput({
           },
         },
       }}
+      multiline={multiline}
+      rows={rows}
       InputProps={{ endAdornment: endAdornment }}
       error={inputError}
       helperText={inputTextError}

@@ -1,9 +1,14 @@
 import styled from "styled-components";
 import { ButtonComponent } from "../../components/Buttons/ButtonComponent";
 import { TextInput } from "../../components/Inputs/TextInput";
-import FileUpload from "react-material-file-upload";
-import { useState } from "react";
+import { MenuItem } from "@mui/material";
 import logo from "../../public/static/images/logo.svg";
+import { useState, useEffect } from "react";
+import { Select } from "@mui/material";
+import colors from "../../public/css/colors";
+import { FormControl } from "@mui/material";
+import { InputLabel } from "@mui/material";
+
 const View = styled.div`
   background-color: #252422;
   display: flex;
@@ -31,37 +36,91 @@ const Logo = styled.img`
 `;
 
 function NewCarForm() {
-  const [files, setFiles] = useState([]);
+  const [years, setYears] = useState([]);
+  const [selectedYear, setSelectedYear] = useState("");
+  const availableYears = [];
+
+  useEffect(() => {
+    for (let i = 1940; i <= 2022; i++) {
+      availableYears.push(i);
+    }
+    setYears(availableYears);
+  }, []);
 
   return (
     <>
       <Form>
-        <TextInput label={"Modelo do carro"} />
-        <TextInput height={"9rem"} label={"Descrição"} />
-        <FileUpload
-          buttonProps={{
-            sx: {
-              backgroundColor: "#EB5E28",
-              "&:hover": { backgroundColor: "#e17f59" },
-            },
-          }}
-          title={""}
-          buttonText={"ANEXAR IMAGENS"}
-          sx={{
-            color: "white;",
-            borderColor: "#EB5E28",
-            "&:hover": { borderColor: "#EB5E28" },
-            "&:focus": { borderColor: "white" },
-            ".MuiSvgIcon-root": {
-              fill: "white",
-            },
-            ".MuiBox-root li div": {
+        <TextInput label={"Digite o modelo"} />
+        <FormControl fullWidth>
+          <InputLabel
+            sx={{ "&.Mui-focused": { color: "white" }, color: "white" }}
+            id="select-year-label"
+          >
+            Selecione o ano
+          </InputLabel>
+          <Select
+            sx={{
+              "&:hover, &.Mui-focused": {
+                "&& fieldset": {
+                  border: `1px solid ${colors.primaryColor}`,
+                },
+              },
               color: "white",
-            },
-          }}
-          value={files}
-          onChange={setFiles}
+              fieldset: {
+                borderColor: colors.primaryColor,
+              },
+              svg: {
+                fill: colors.primaryColor,
+              },
+            }}
+            MenuProps={{ sx: { maxHeight: "15rem" } }}
+            labelId="select-year-label"
+            value={selectedYear}
+            defaultValue=""
+            label="Selecione o ano"
+            onChange={(e) => {
+              setSelectedYear(e.target.value);
+            }}
+          >
+            <MenuItem value={""}>Vazio</MenuItem>
+            {years.map((year, i) => {
+              return (
+                <MenuItem key={i} value={year}>
+                  {year}
+                </MenuItem>
+              );
+            })}
+          </Select>
+        </FormControl>
+        <TextInput
+          multiline={true}
+          rows={4}
+          height={"9rem"}
+          label={"Digite uma descrição"}
         />
+        <div
+          style={{
+            padding: "1rem",
+            border: `1px solid ${"#EB5E28"}`,
+            display: "flex",
+            flexDirection: "column",
+            gap: "1rem",
+          }}
+        >
+          <label
+            style={{ fontWeight: "700", color: "#e17f59" }}
+            htmlFor="files"
+          >
+            Upload de imagens
+          </label>
+          <input
+            id="files"
+            style={{ color: "white" }}
+            accept=".jpg, .png"
+            multiple
+            type="file"
+          />
+        </div>
         <ButtonComponent
           bgColor={"#EB5E28"}
           bgHover={"#e17f59"}
