@@ -73,6 +73,7 @@ function NewCarForm() {
                 fill: colors.primaryColor,
               },
             }}
+            MenuProps={{ sx: { maxHeight: "15rem" } }}
             labelId="select-year-label"
             value={selectedYear}
             defaultValue=""
