@@ -1,8 +1,11 @@
 import styled from "styled-components";
 import { ButtonComponent } from "../../components/Buttons/ButtonComponent";
 import { TextInput } from "../../components/Inputs/TextInput";
-import { useState } from "react";
+import { MenuItem } from "@mui/material";
 import logo from "../../public/static/images/logo.svg";
+import { useState, useEffect } from "react";
+import { Select } from "@mui/material";
+
 const View = styled.div`
   background-color: #252422;
   display: flex;
@@ -30,15 +33,41 @@ const Logo = styled.img`
 `;
 
 function NewCarForm() {
+  const [years, setYears] = useState([]);
+  const [selectedYear, setSelectedYear] = useState();
+  const availableYears = [];
+
+  useEffect(() => {
+    for (let i = 1940; i <= 2022; i++) {
+      availableYears.push(i);
+    }
+    setYears(availableYears);
+  }, []);
+
   return (
     <>
       <Form>
-        <TextInput label={"Modelo do carro"} />
+        <TextInput label={"Digite o modelo"} />
+        <Select
+          label={"Selecione o ano"}
+          defaultValue={""}
+          onChange={(e) => {
+            setSelectedYear(e.target.value);
+          }}
+        >
+          {years.map((year, i) => {
+            return (
+              <MenuItem key={i} value={year}>
+                {year}
+              </MenuItem>
+            );
+          })}
+        </Select>
         <TextInput
           multiline={true}
           rows={4}
           height={"9rem"}
-          label={"Descrição"}
+          label={"Digite uma descrição"}
         />
         <ButtonComponent
           bgColor={"#EB5E28"}
