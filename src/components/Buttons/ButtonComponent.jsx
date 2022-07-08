@@ -14,6 +14,7 @@ export function ButtonComponent({
   bgHover,
   bcHover,
   component,
+  event,
 }) {
   const styles = {
     "&.MuiButton-root": {
@@ -39,6 +40,7 @@ export function ButtonComponent({
       sx={styles}
       variant={variant}
       component={component}
+      onClick={event}
     >
       {buttonContent}
     </Button>

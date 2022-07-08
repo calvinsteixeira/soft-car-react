@@ -15,6 +15,7 @@ export function TextInput({
   endAdornment,
   multiline,
   rows,
+  labelColor,
 }) {
   return (
     <TextField
@@ -36,7 +37,7 @@ export function TextInput({
           },
         },
         label: {
-          color: colors.textPrimary,
+          color: labelColor || colors.textPrimary,
         },
 
         "& .MuiOutlinedInput-root": {

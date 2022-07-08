@@ -1,12 +1,33 @@
-import styled from "styled-components";
 import { CarCard } from "../../components/DataShow/Card";
-import { useState } from "react";
-import { useEffect } from "react";
 import axios from "axios";
 import { CompactMenu } from "../../components/Menus/CompactMenu";
 import { LargeMenu } from "../../components/Menus/LargeMenu";
 import Fab from "@mui/material/Fab";
 import AddIcon from "@mui/icons-material/Add";
+import styled from "styled-components";
+import { ButtonComponent } from "../../components/Buttons/ButtonComponent";
+import { TextInput } from "../../components/Inputs/TextInput";
+import { MenuItem } from "@mui/material";
+import { useState, useEffect } from "react";
+import { Select } from "@mui/material";
+import colors from "../../public/css/colors";
+import { FormControl } from "@mui/material";
+import { InputLabel } from "@mui/material";
+import Dialog from "@mui/material/Dialog";
+import DialogActions from "@mui/material/DialogActions";
+import DialogContent from "@mui/material/DialogContent";
+import DialogTitle from "@mui/material/DialogTitle";
+
+const Form = styled.form`
+  @media (min-width: 480px) {
+    width: 16rem;
+  }
+
+  display: flex;
+  flex-direction: column;
+  width: 14rem;
+  gap: 0.8rem;
+`;
 
 const View = styled.div`
   background-color: #252422;
@@ -35,6 +56,9 @@ const CardsContainer = styled.div`
 export function HomeView() {
   const apiUrl = "https://authenticateapi.herokuapp.com";
   const [cars, setCars] = useState([]);
+  const [selectedYear, setSelectedYear] = useState();
+  const [showDialog, setShowDialog] = useState(false);
+  const [years, setYears] = useState([]);
   const isLogged = sessionStorage.getItem("isLogged");
 
   if (isLogged) {
@@ -53,8 +77,134 @@ export function HomeView() {
         .catch((err) => console.log(err.response));
     }, []);
 
+    useEffect(() => {
+      getYears();
+    }, [showDialog]);
+
+    function getYears() {
+      let availableYears = [];
+      for (let i = 1940; i < 2022; i++) {
+        availableYears.push(i);
+      }
+
+      setYears(availableYears);
+    }
+
+    function handleClose() {
+      setShowDialog(false);
+    }
+
     return (
       <View>
+        <Dialog
+          sx={{ background: "#25242258" }}
+          open={showDialog}
+          onClose={handleClose}
+        >
+          <DialogTitle sx={{ background: "#f7f7f7" }}>
+            Adicionar novo carro
+          </DialogTitle>
+          <DialogContent sx={{ background: "#f7f7f7" }}>
+            <Form>
+              <TextInput labelColor={"#EB5E28"} label={"Digite o modelo"} />
+              <FormControl fullWidth>
+                <InputLabel
+                  sx={{
+                    "&.Mui-focused": { color: "#EB5E28" },
+                    color: "#EB5E28",
+                  }}
+                  id="select-year-label"
+                >
+                  Selecione o ano
+                </InputLabel>
+                <Select
+                  sx={{
+                    "&:hover, &.Mui-focused": {
+                      "&& fieldset": {
+                        border: `1px solid ${colors.primaryColor}`,
+                      },
+                    },
+                    color: "#EB5E28",
+                    fieldset: {
+                      borderColor: colors.primaryColor,
+                    },
+                    svg: {
+                      fill: colors.primaryColor,
+                    },
+                  }}
+                  MenuProps={{ sx: { maxHeight: "15rem" } }}
+                  labelId="select-year-label"
+                  value={selectedYear}
+                  defaultValue=""
+                  label="Selecione o ano"
+                  onChange={(e) => {
+                    setSelectedYear(e.target.value);
+                  }}
+                >
+                  <MenuItem value={""}>Vazio</MenuItem>
+                  {years.map((year, i) => {
+                    return (
+                      <MenuItem key={i} value={year}>
+                        {year}
+                      </MenuItem>
+                    );
+                  })}
+                </Select>
+              </FormControl>
+              <TextInput
+                labelColor={"#EB5E28"}
+                multiline={true}
+                rows={4}
+                height={"9rem"}
+                label={"Digite uma descrição"}
+              />
+              <div
+                style={{
+                  padding: "1rem",
+                  border: `1px solid ${"#EB5E28"}`,
+                  display: "flex",
+                  flexDirection: "column",
+                  gap: "1rem",
+                }}
+              >
+                <label
+                  style={{ fontWeight: "700", color: "#e17f59" }}
+                  htmlFor="files"
+                >
+                  Upload de imagens
+                </label>
+                <input
+                  id="files"
+                  style={{ color: "white" }}
+                  accept=".jpg, .png"
+                  multiple
+                  type="file"
+                />
+              </div>
+            </Form>
+          </DialogContent>
+          <DialogActions sx={{ background: "#f7f7f7" }}>
+            <ButtonComponent
+              width={"100%"}
+              bgColor={"#EB5E28"}
+              bgHover={"#e17f59"}
+              variant={"contained"}
+              event={handleClose}
+              buttonContent={"ADICIONAR"}
+            />
+            <ButtonComponent
+              width={"100%"}
+              textColor={"#EB5E28"}
+              borderColor={"#EB5E28"}
+              bcHover={"#e17f59"}
+              bgColor={"transparent"}
+              bgHover={"transparent"}
+              variant={"outlined"}
+              event={handleClose}
+              buttonContent={"CANCELAR"}
+            />
+          </DialogActions>
+        </Dialog>
         <CardsContainer>
           {cars.map((car) => {
             return (
@@ -67,7 +217,15 @@ export function HomeView() {
             );
           })}
         </CardsContainer>
-        <CompactMenu />
+        <CompactMenu
+          newCarEvent={() => {
+            setShowDialog(true);
+          }}
+          logoutEvent={() => {
+            sessionStorage.removeItem("isLogged");
+            window.location.href = "/";
+          }}
+        />
         <LargeMenu />
         <Fab
           variant="extended"
@@ -91,7 +249,9 @@ export function HomeView() {
           }}
           size={"medium"}
           aria-label="add"
-          href={'/novo-carro'}
+          onClick={() => {
+            setShowDialog(true);
+          }}
         >
           <AddIcon />
           Novo Carro
