@@ -1,7 +1,6 @@
 import styled from "styled-components";
 import { ButtonComponent } from "../../components/Buttons/ButtonComponent";
 import { TextInput } from "../../components/Inputs/TextInput";
-import FileUpload from "react-material-file-upload";
 import { useState } from "react";
 import logo from "../../public/static/images/logo.svg";
 const View = styled.div`
@@ -31,37 +30,11 @@ const Logo = styled.img`
 `;
 
 function NewCarForm() {
-  const [files, setFiles] = useState([]);
-
   return (
     <>
       <Form>
         <TextInput label={"Modelo do carro"} />
         <TextInput height={"9rem"} label={"Descrição"} />
-        <FileUpload
-          buttonProps={{
-            sx: {
-              backgroundColor: "#EB5E28",
-              "&:hover": { backgroundColor: "#e17f59" },
-            },
-          }}
-          title={""}
-          buttonText={"ANEXAR IMAGENS"}
-          sx={{
-            color: "white;",
-            borderColor: "#EB5E28",
-            "&:hover": { borderColor: "#EB5E28" },
-            "&:focus": { borderColor: "white" },
-            ".MuiSvgIcon-root": {
-              fill: "white",
-            },
-            ".MuiBox-root li div": {
-              color: "white",
-            },
-          }}
-          value={files}
-          onChange={setFiles}
-        />
         <ButtonComponent
           bgColor={"#EB5E28"}
           bgHover={"#e17f59"}
