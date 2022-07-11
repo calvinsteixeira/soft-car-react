@@ -56,6 +56,8 @@ const CardsContainer = styled.div`
 export function HomeView() {
   const apiUrl = "https://authenticateapi.herokuapp.com";
   const [cars, setCars] = useState([]);
+  const [selectedFiles, setSelectedFiles] = useState([]);
+  const [uploadFilesText, setUploadFilesText] = useState("Anexar imagens");
   const [selectedYear, setSelectedYear] = useState();
   const [showDialog, setShowDialog] = useState(false);
   const [years, setYears] = useState([]);
@@ -90,18 +92,14 @@ export function HomeView() {
       setYears(availableYears);
     }
 
-    function handleClose() {
+    function handleClose(e) {
       setShowDialog(false);
     }
 
     return (
       <View>
-        <Dialog
-          sx={{ background: "#25242258" }}
-          open={showDialog}
-          onClose={handleClose}
-        >
-          <DialogTitle sx={{ background: "#f7f7f7" }}>
+        <Dialog open={showDialog} onClose={handleClose}>
+          <DialogTitle sx={{ textAlign: "center", background: "#f7f7f7" }}>
             Adicionar novo carro
           </DialogTitle>
           <DialogContent sx={{ background: "#f7f7f7" }}>
@@ -168,17 +166,78 @@ export function HomeView() {
                 }}
               >
                 <label
-                  style={{ fontWeight: "700", color: "#e17f59" }}
+                  style={{
+                    cursor: "pointer",
+                    fontWeight: "500",
+                    color: "white",
+                    width: "100%",
+                    backgroundColor: "#5c5c5c",
+                    padding: "0.4rem",
+                    textAlign: "center",
+                    borderRadius: "0.25rem",
+                  }}
                   htmlFor="files"
                 >
-                  Upload de imagens
+                  {uploadFilesText}
                 </label>
+                <div
+                  style={{
+                    display: selectedFiles.length > 0 ? "flex" : "none",
+                    flexDirection: "column",
+                    gap: "0.4rem",
+                  }}
+                  id="file-container"
+                >
+                  {selectedFiles.map((file, index) => (
+                    <p
+                      style={{
+                        fontWeight: "500",
+                        border: "1px solid #EB5E28",
+                        borderRadius: "0.4rem",
+                        padding: "0.2rem 0.4rem",
+                        width: "max-content",
+                        display: "inline-flex",
+                        gap: "0.3rem",
+                      }}
+                      key={index}
+                    >
+                      {file.name}
+                      <span
+                        onClick={() => {
+                          if (selectedFiles.length == 1) {
+                            setUploadFilesText("Anexar imagens");
+                          }
+                          setSelectedFiles([
+                            ...selectedFiles.filter(
+                              (selectedFile) => selectedFile != file
+                            ),
+                          ]);
+                        }}
+                        style={{
+                          color: "#EB5E28",
+                          fontWeight: "700",
+                          cursor: "pointer",
+                        }}
+                      >
+                        x
+                      </span>
+                    </p>
+                  ))}
+                </div>
                 <input
                   id="files"
-                  style={{ color: "white" }}
+                  style={{ display: "none", color: "white" }}
                   accept=".jpg, .png"
                   multiple
                   type="file"
+                  onChange={(e) => {
+                    const files = [];
+                    for (let file of e.target.files) {
+                      files.push(file);
+                    }
+                    setSelectedFiles(files);
+                    setUploadFilesText("Anexar mais imagens");
+                  }}
                 />
               </div>
             </Form>
@@ -189,7 +248,7 @@ export function HomeView() {
               bgColor={"#EB5E28"}
               bgHover={"#e17f59"}
               variant={"contained"}
-              event={handleClose}
+              event={(e) => handleClose(e)}
               buttonContent={"ADICIONAR"}
             />
             <ButtonComponent
