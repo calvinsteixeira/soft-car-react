@@ -22,7 +22,7 @@ const Form = styled.form`
   @media (min-width: 480px) {
     width: 16rem;
   }
-
+  padding-top: 1rem;
   display: flex;
   flex-direction: column;
   width: 14rem;
@@ -104,7 +104,11 @@ export function HomeView() {
           </DialogTitle>
           <DialogContent sx={{ background: "#f7f7f7" }}>
             <Form>
-              <TextInput labelColor={"#EB5E28"} label={"Digite o modelo"} />
+              <TextInput
+                labelFocusedColor={"#EB5E28"}
+                labelColor={"#EB5E28"}
+                label={"Digite o modelo"}
+              />
               <FormControl fullWidth>
                 <InputLabel
                   sx={{
@@ -150,6 +154,7 @@ export function HomeView() {
                 </Select>
               </FormControl>
               <TextInput
+                labelFocusedColor={"#EB5E28"}
                 labelColor={"#EB5E28"}
                 multiline={true}
                 rows={4}
@@ -158,7 +163,6 @@ export function HomeView() {
               />
               <div
                 style={{
-                  flexShrink: "1",
                   padding: "1rem",
                   border: `1px dashed #21628d`,
                   display: "flex",
@@ -193,16 +197,23 @@ export function HomeView() {
                     <p
                       style={{
                         fontWeight: "500",
+                        overflow: "hidden",
                         border: "1px dashed #21628d",
                         borderRadius: "0.4rem",
                         padding: "0.1rem 0.4rem",
                         width: "max-content",
-                        display: "inline-flex",
-                        gap: "0.3rem",
+                        whiteSpace: "nowrap",
+                        display: "inline-block",
+                        textOverflow: "ellipsis",
                       }}
                       key={index}
                     >
-                      {file.name}
+                      {file.name.length > 13
+                        ? file.name.substring(0, 14) +
+                          "..." +
+                          file.name.slice(-3) +
+                          " "
+                        : file.name + " "}
                       <span
                         onClick={() => {
                           if (selectedFiles.length == 1) {

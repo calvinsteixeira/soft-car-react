@@ -16,13 +16,14 @@ export function TextInput({
   multiline,
   rows,
   labelColor,
+  labelFocusedColor,
 }) {
   return (
     <TextField
       required={required}
       sx={{
         "& label.Mui-focused": {
-          color: colors.textPrimary,
+          color: labelFocusedColor || colors.textPrimary,
         },
         input: {
           height: height,
