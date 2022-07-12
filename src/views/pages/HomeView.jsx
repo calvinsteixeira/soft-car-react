@@ -166,6 +166,7 @@ export function HomeView() {
                   padding: "1rem",
                   border: `1px dashed #21628d`,
                   display: "flex",
+                  backgroundColor: "#bfdef3",
                   flexDirection: "column",
                   gap: "1rem",
                 }}
@@ -174,9 +175,10 @@ export function HomeView() {
                   style={{
                     cursor: "pointer",
                     fontWeight: "500",
-                    color: "white",
+                    color: "#21628d",
                     width: "100%",
-                    backgroundColor: "#297cb3",
+                    border: "1px dashed #21628d",
+                    backgroundColor: "#a6c9e0",
                     padding: "0.4rem",
                     textAlign: "center",
                     borderRadius: "0.25rem",
