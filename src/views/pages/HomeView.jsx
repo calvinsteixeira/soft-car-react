@@ -158,8 +158,9 @@ export function HomeView() {
               />
               <div
                 style={{
+                  flexShrink: "1",
                   padding: "1rem",
-                  border: `1px solid ${"#EB5E28"}`,
+                  border: `1px dashed #21628d`,
                   display: "flex",
                   flexDirection: "column",
                   gap: "1rem",
@@ -171,7 +172,7 @@ export function HomeView() {
                     fontWeight: "500",
                     color: "white",
                     width: "100%",
-                    backgroundColor: "#5c5c5c",
+                    backgroundColor: "#297cb3",
                     padding: "0.4rem",
                     textAlign: "center",
                     borderRadius: "0.25rem",
@@ -192,9 +193,9 @@ export function HomeView() {
                     <p
                       style={{
                         fontWeight: "500",
-                        border: "1px solid #EB5E28",
+                        border: "1px dashed #21628d",
                         borderRadius: "0.4rem",
-                        padding: "0.2rem 0.4rem",
+                        padding: "0.1rem 0.4rem",
                         width: "max-content",
                         display: "inline-flex",
                         gap: "0.3rem",
@@ -214,7 +215,7 @@ export function HomeView() {
                           ]);
                         }}
                         style={{
-                          color: "#EB5E28",
+                          color: "#21628d",
                           fontWeight: "700",
                           cursor: "pointer",
                         }}
