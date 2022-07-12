@@ -100,10 +100,24 @@ export function HomeView() {
     return (
       <View>
         <Dialog open={showDialog} onClose={handleClose}>
-          <DialogTitle sx={{ textAlign: "center", background: "#f7f7f7" }}>
+          <DialogTitle
+            sx={{
+              marginTop: "1rem",
+              padding: "0",
+              textAlign: "center",
+              background: "#f7f7f7",
+            }}
+          >
             Adicionar novo carro
           </DialogTitle>
-          <DialogContent sx={{ background: "#f7f7f7" }}>
+          <DialogContent
+            sx={{
+              display: "flex",
+              alignItems: "center",
+              justifyContent: "center",
+              background: "#f7f7f7",
+            }}
+          >
             <Form>
               <TextInput
                 labelFocusedColor={"#EB5E28"}
