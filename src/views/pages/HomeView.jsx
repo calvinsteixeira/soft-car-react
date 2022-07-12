@@ -17,6 +17,7 @@ import Dialog from "@mui/material/Dialog";
 import DialogActions from "@mui/material/DialogActions";
 import DialogContent from "@mui/material/DialogContent";
 import DialogTitle from "@mui/material/DialogTitle";
+import DriveFolderUploadIcon from "@mui/icons-material/DriveFolderUpload";
 
 const Form = styled.form`
   @media (min-width: 480px) {
@@ -173,18 +174,23 @@ export function HomeView() {
               >
                 <label
                   style={{
+                    display: "flex",
+                    alignItems: "center",
+                    justifyContent: "center",
+                    gap: "0.2rem",
                     cursor: "pointer",
                     fontWeight: "500",
                     color: "#21628d",
                     width: "100%",
                     border: "1px dashed #21628d",
                     backgroundColor: "#a6c9e0",
-                    padding: "0.4rem",
+                    padding: "0.2rem",
                     textAlign: "center",
                     borderRadius: "0.25rem",
                   }}
                   htmlFor="files"
                 >
+                  <DriveFolderUploadIcon />
                   {uploadFilesText}
                 </label>
                 <div
