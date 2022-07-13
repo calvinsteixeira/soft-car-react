@@ -267,9 +267,9 @@ export function HomeView() {
                   multiple
                   type="file"
                   onChange={(e) => {
-                    const files = [];
+                    let files = [];
                     for (let file of e.target.files) {
-                      files.push(file);
+                      files.push(...selectedFiles, file);
                     }
                     setSelectedFiles(files);
                     setUploadFilesText("Anexar mais imagens");
