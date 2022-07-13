@@ -31,6 +31,53 @@ const Form = styled.form`
   gap: 0.8rem;
 `;
 
+const AddFilesButton = styled.label`
+  &:hover {
+    background-color: #bbd7eb;
+  }
+  transition: 0.5s;
+  font-size: 0.9rem;
+  font-family: Roboto, sans-serif;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  cursor: pointer;
+  font-weight: 500;
+  color: #21628d;
+  width: 100%;
+  border: 1px solid #21628d;
+  background-color: #a6c9e0;
+  padding: 0.3rem;
+  text-align: center;
+  border-radius: 0.25rem;
+`;
+
+const ClearFileListButton = styled.button`
+  &:hover {
+    background-color: #e5b6b6;
+  }
+  transition: 0.5s;
+  font-size: 0.9rem;
+  font-family: "Roboto", sans-serif;
+  font-weight: 300;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  cursor: pointer;
+  font-weight: 500;
+  color: #8d2121;
+  width: 100%;
+  border: 1px solid #8d2121;
+  background-color: #e0a6a6;
+  padding: 0.3rem;
+  text-align: center;
+  border-radius: 0.25rem;
+  margin-bottom: 0.4rem;
+  margin-top: 0.4rem;
+`;
+
 const View = styled.div`
   background-color: #252422;
   display: flex;
@@ -186,62 +233,23 @@ export function HomeView() {
                   flexDirection: "column",
                 }}
               >
-                <label
-                  style={{
-                    fontSize: "0.9rem",
-                    fontFamily: "Roboto, sans-serif",
-                    display: "flex",
-                    alignItems: "center",
-                    justifyContent: "center",
-                    position: "relative",
-                    cursor: "pointer",
-                    fontWeight: "500",
-                    color: "#21628d",
-                    width: "100%",
-                    border: "1px solid #21628d",
-                    backgroundColor: "#a6c9e0",
-                    padding: "0.3rem",
-                    textAlign: "center",
-                    borderRadius: "0.25rem",
-                  }}
-                  htmlFor="files"
-                >
+                <AddFilesButton htmlFor="files">
                   <DriveFolderUploadIcon
                     sx={{ position: "absolute", left: "0.5rem" }}
                   />
                   {uploadFilesText}
-                </label>
+                </AddFilesButton>
                 {selectedFiles.length > 0 && (
-                  <button
+                  <ClearFileListButton
                     onClick={() => {
                       setSelectedFiles([]);
-                    }}
-                    style={{
-                      fontSize: "0.9rem",
-                      fontFamily: "Roboto, sans-serif",
-                      fontWeight: "300",
-                      display: "flex",
-                      alignItems: "center",
-                      justifyContent: "center",
-                      position: "relative",
-                      cursor: "pointer",
-                      fontWeight: "500",
-                      color: "#8d2121",
-                      width: "100%",
-                      border: "1px solid #8d2121",
-                      backgroundColor: "#e0a6a6",
-                      padding: "0.3rem",
-                      textAlign: "center",
-                      borderRadius: "0.25rem",
-                      marginBottom: "0.4rem",
-                      marginTop: "0.4rem",
                     }}
                   >
                     <DeleteForeverIcon
                       sx={{ position: "absolute", left: "0.5rem" }}
                     />
                     Limpar lista
-                  </button>
+                  </ClearFileListButton>
                 )}
                 <div
                   style={{
