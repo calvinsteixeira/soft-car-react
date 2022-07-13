@@ -27,7 +27,7 @@ const Form = styled.form`
   padding-top: 1rem;
   display: flex;
   flex-direction: column;
-  width: 14rem;
+  width: 100%;
   gap: 0.8rem;
 `;
 
@@ -147,7 +147,15 @@ export function HomeView() {
 
     return (
       <View>
-        <Dialog open={showDialog} onClose={handleClose}>
+        <Dialog
+          sx={{
+            ".MuiPaper-root": {
+              width: "80%",
+            },
+          }}
+          open={showDialog}
+          onClose={handleClose}
+        >
           <DialogTitle
             sx={{
               marginTop: "1rem",
@@ -160,6 +168,7 @@ export function HomeView() {
           </DialogTitle>
           <DialogContent
             sx={{
+              padding: "0 0.5rem",
               display: "flex",
               alignItems: "center",
               justifyContent: "center",
@@ -266,7 +275,7 @@ export function HomeView() {
                     <p
                       style={{
                         fontWeight: "500",
-                        border: "1px dashed #21628d",
+                        border: "1px dashed #403D39",
                         borderRadius: "0.4rem",
                         padding: "0.1rem 0.4rem",
                         width: "max-content",
@@ -294,7 +303,7 @@ export function HomeView() {
                           ]);
                         }}
                         style={{
-                          color: "#21628d",
+                          color: "#403D39",
                           fontWeight: "700",
                           cursor: "pointer",
                         }}
