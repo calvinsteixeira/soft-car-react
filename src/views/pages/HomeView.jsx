@@ -209,6 +209,9 @@ export function HomeView() {
                 </label>
                 <div
                   style={{
+                    maxHeight: "8rem",
+                    overflowX: "hidden",
+                    overflowY: "auto",
                     display: selectedFiles.length > 0 ? "flex" : "none",
                     flexDirection: "column",
                     gap: "0.4rem",
@@ -219,7 +222,6 @@ export function HomeView() {
                     <p
                       style={{
                         fontWeight: "500",
-                        overflow: "hidden",
                         border: "1px dashed #21628d",
                         borderRadius: "0.4rem",
                         padding: "0.1rem 0.4rem",
@@ -230,8 +232,8 @@ export function HomeView() {
                       }}
                       key={index}
                     >
-                      {file.name.length > 13
-                        ? file.name.substring(0, 14) +
+                      {file.name.length > 12
+                        ? file.name.substring(0, 12) +
                           "..." +
                           file.name.slice(-3) +
                           " "
