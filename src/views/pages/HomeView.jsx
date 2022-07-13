@@ -18,6 +18,7 @@ import DialogActions from "@mui/material/DialogActions";
 import DialogContent from "@mui/material/DialogContent";
 import DialogTitle from "@mui/material/DialogTitle";
 import DriveFolderUploadIcon from "@mui/icons-material/DriveFolderUpload";
+import DeleteForeverIcon from "@mui/icons-material/DeleteForever";
 
 const Form = styled.form`
   @media (min-width: 480px) {
@@ -183,32 +184,70 @@ export function HomeView() {
                   display: "flex",
                   backgroundColor: "#bfdef3",
                   flexDirection: "column",
-                  gap: "1rem",
                 }}
               >
                 <label
                   style={{
+                    fontSize: "0.9rem",
+                    fontFamily: "Roboto, sans-serif",
                     display: "flex",
                     alignItems: "center",
                     justifyContent: "center",
-                    gap: "0.2rem",
+                    position: "relative",
                     cursor: "pointer",
                     fontWeight: "500",
                     color: "#21628d",
                     width: "100%",
-                    border: "1px dashed #21628d",
+                    border: "1px solid #21628d",
                     backgroundColor: "#a6c9e0",
-                    padding: "0.2rem",
+                    padding: "0.3rem",
                     textAlign: "center",
                     borderRadius: "0.25rem",
                   }}
                   htmlFor="files"
                 >
-                  <DriveFolderUploadIcon />
+                  <DriveFolderUploadIcon
+                    sx={{ position: "absolute", left: "0.5rem" }}
+                  />
                   {uploadFilesText}
                 </label>
+                {selectedFiles.length > 0 && (
+                  <button
+                    onClick={() => {
+                      setSelectedFiles([]);
+                    }}
+                    style={{
+                      fontSize: "0.9rem",
+                      fontFamily: "Roboto, sans-serif",
+                      fontWeight: "300",
+                      display: "flex",
+                      alignItems: "center",
+                      justifyContent: "center",
+                      position: "relative",
+                      cursor: "pointer",
+                      fontWeight: "500",
+                      color: "#8d2121",
+                      width: "100%",
+                      border: "1px solid #8d2121",
+                      backgroundColor: "#e0a6a6",
+                      padding: "0.3rem",
+                      textAlign: "center",
+                      borderRadius: "0.25rem",
+                      marginBottom: "0.4rem",
+                      marginTop: "0.4rem",
+                    }}
+                  >
+                    <DeleteForeverIcon
+                      sx={{ position: "absolute", left: "0.5rem" }}
+                    />
+                    Limpar lista
+                  </button>
+                )}
                 <div
                   style={{
+                    maxHeight: "8rem",
+                    overflowX: "hidden",
+                    overflowY: "auto",
                     display: selectedFiles.length > 0 ? "flex" : "none",
                     flexDirection: "column",
                     gap: "0.4rem",
@@ -219,7 +258,6 @@ export function HomeView() {
                     <p
                       style={{
                         fontWeight: "500",
-                        overflow: "hidden",
                         border: "1px dashed #21628d",
                         borderRadius: "0.4rem",
                         padding: "0.1rem 0.4rem",
@@ -230,8 +268,8 @@ export function HomeView() {
                       }}
                       key={index}
                     >
-                      {file.name.length > 13
-                        ? file.name.substring(0, 14) +
+                      {file.name.length > 12
+                        ? file.name.substring(0, 12) +
                           "..." +
                           file.name.slice(-3) +
                           " "
@@ -265,12 +303,11 @@ export function HomeView() {
                   multiple
                   type="file"
                   onChange={(e) => {
-                    const files = [];
+                    let files = [];
                     for (let file of e.target.files) {
-                      files.push(file);
+                      files.push(...selectedFiles, file);
                     }
                     setSelectedFiles(files);
-                    setUploadFilesText("Anexar mais imagens");
                   }}
                 />
               </div>
