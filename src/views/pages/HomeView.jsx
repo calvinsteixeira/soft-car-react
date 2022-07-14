@@ -21,9 +21,6 @@ import DriveFolderUploadIcon from "@mui/icons-material/DriveFolderUpload";
 import DeleteForeverIcon from "@mui/icons-material/DeleteForever";
 
 const Form = styled.form`
-  @media (min-width: 480px) {
-    width: 16rem;
-  }
   padding-top: 1rem;
   display: flex;
   flex-direction: column;
@@ -150,7 +147,7 @@ export function HomeView() {
         <Dialog
           sx={{
             ".MuiPaper-root": {
-              width: "80%",
+              width: "20rem",
             },
           }}
           open={showDialog}
